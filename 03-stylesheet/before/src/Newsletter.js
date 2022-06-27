@@ -1,15 +1,20 @@
-import React from 'react'
+import React from "react";
 
-import './Newsletter.css'
+import "./Newsletter.css";
 
 function Newsletter(props) {
-  const [email, setEmail] = React.useState('')
-  // const emailPartsCount = countEmailParts(email)
+  const [email, setEmail] = React.useState("");
+  const emailPartsCount = countEmailParts(email);
   return (
     <section className="es-newsletter">
       <div className="es-newsletter__spectrum" aria-hidden>
         {Array.from(Array(5)).map((_, i) => (
-          <div className={`es-newsletter__bar`} key={i}></div>
+          <div
+            className={`es-newsletter__bar ${
+              i + 1 <= emailPartsCount && "es-newsletter__bar--active"
+            }`}
+            key={i}
+          ></div>
         ))}
       </div>
       <header className="es-newsletter__header">
@@ -24,23 +29,23 @@ function Newsletter(props) {
       />
       <button className={`es-newsletter__submit`}>Sign up</button>
     </section>
-  )
+  );
 }
 
-export default Newsletter
+export default Newsletter;
 
-// function countEmailParts(email) {
-//   if (/@.+\..{2,}$/.test(email)) {
-//     return 5
-//   } else if (/@.+\..?$/.test(email)) {
-//     return 4
-//   } else if (/@.+$/.test(email)) {
-//     return 3
-//   } else if (/@/.test(email)) {
-//     return 2
-//   } else if (/.+/.test(email)) {
-//     return 1
-//   } else {
-//     return 0
-//   }
-// }
+function countEmailParts(email) {
+  if (/@.+\..{2,}$/.test(email)) {
+    return 5;
+  } else if (/@.+\..?$/.test(email)) {
+    return 4;
+  } else if (/@.+$/.test(email)) {
+    return 3;
+  } else if (/@/.test(email)) {
+    return 2;
+  } else if (/.+/.test(email)) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
