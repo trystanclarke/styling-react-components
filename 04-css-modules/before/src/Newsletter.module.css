@@ -5,6 +5,16 @@
   --colorSpectrum4: #5b56e8;
   --colorSpectrum5: #5e9fff;
 }
+
+@keyframes bar--jitter {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.9);
+  }
+}
+
 .container {
   position: relative;
   max-width: 100%;
@@ -63,10 +73,16 @@
   pointer-events: none;
 }
 .bar {
+  animation: bar--jitter 350ms ease-out infinite alternate;
   height: 0.5em;
   width: 20%;
   transform-origin: bottom;
   transition: all 1s;
+}
+.barActive {
+  /* This 'composes' keyword means that when .barActive class is used it will actually combine bar and barActive classes e.g. class='bar bar-active'  */
+  composes: bar;
+  height: 100%;
 }
 .bar:nth-child(1n) {
   background: var(--colorSpectrum1);
@@ -82,4 +98,10 @@
 }
 .bar:nth-child(5n) {
   background: var(--colorSpectrum5);
+}
+@media (min-width: 800px) {
+  .container {
+    font-size: 2.25em;
+    max-width: 700px;
+  }
 }

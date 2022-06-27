@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@friendsofreactjs/react-css-themr": "^4.1.0",
+    "@friendsofreactjs/react-css-themr": "^4.3.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
